@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  grafana:
+    build:
+      context: ./grafana
+      dockerfile: grafana.dockerfile
+    logging:
+      driver: none
+    restart: unless-stopped
+    container_name: grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/gf-password
+    volumes:
+      - grafana:/var/lib/grafana
+    secrets:
+      - gf-password
+
+volumes:
+  grafana:
+
+secrets:
+  gf-password:
+    file: /run/secrets/gf-password
+
+networks:
+  default:
+    external:
+      name: localmachine  

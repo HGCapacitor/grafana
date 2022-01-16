@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: <YOUR URL>
+    isDefault: true
+    database: energy
+    user: <YOUR DB USER>
+    jsonData:
+      httpMode: GET
+    secureJsonData:
+      password: <YOUR DB USER PASSWORD>
