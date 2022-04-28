@@ -12,18 +12,22 @@ services:
     ports:
       - 3000:3000
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/gf-password
+      - GF_SECURITY_ADMIN_PASSWORD__FILE=/var/secrets/gf-password
+      - INFLUXDB_PASS=/var/secrets/influxdb-password
     volumes:
       - grafana:/var/lib/grafana
     secrets:
       - gf-password
+      - influxdb-password
 
 volumes:
   grafana:
 
 secrets:
   gf-password:
-    file: /run/secrets/gf-password
+    file: /var/secrets/gf-password
+  influxdb-password:
+    file: /var/secrets/influxdb-password
 
 networks:
   default:

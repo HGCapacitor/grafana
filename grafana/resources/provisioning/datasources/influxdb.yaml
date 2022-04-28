@@ -4,11 +4,11 @@ datasources:
   - name: InfluxDB
     type: influxdb
     access: proxy
-    url: <YOUR URL>
+    url: http://influxdb:8086
     isDefault: true
     database: energy
-    user: <YOUR DB USER>
+    user: root
     jsonData:
       httpMode: GET
     secureJsonData:
-      password: <YOUR DB USER PASSWORD>
+      password: $INFLUXDB_PASS
